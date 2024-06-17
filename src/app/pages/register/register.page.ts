@@ -1,0 +1,118 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { user } from 'src/app/models/usuario/usuario';
+import { AuthService } from 'src/app/services/auth.service';
+import { HelperService } from 'src/app/services/helper.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { AlertController } from '@ionic/angular';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
+})
+export class RegisterPage {
+  datos: user = {
+    nombre: '',
+    correo: '',
+    numero: '',
+    password: '',
+    uid: '',
+    perfil: '',
+    especialidad: '',
+    direccion: '',
+    idColab: '',    // Añadir campo idColab
+    idCliente: ''   // Añadir campo idCliente
+  };
+
+  especialidadesDescripcion = {
+    gasfiteria: 'Instalación y reparación de sistemas de tuberías y artefactos sanitarios para agua y gas.',
+    plomeria: 'Mantenimiento y arreglo de tuberías, grifos, y sistemas de desagüe en construcciones.',
+    cerrajeria: 'Servicios de seguridad para cerraduras y sistemas de acceso en propiedades.',
+    limpieza: 'Servicios de mantenimiento de limpieza general y profunda para espacios variados.'
+  };
+
+  constructor(
+    private auth: AuthService,
+    private store: StorageService,
+    private helper: HelperService,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
+
+  async registrar() {
+    if (!this.datos.nombre || !this.datos.correo || !this.datos.numero || !this.datos.password || !this.datos.perfil) {
+      this.helper.presentToast('Todos los campos son obligatorios.');
+      return;
+    }
+
+    if (this.datos.nombre.length < 3 || this.datos.nombre.length > 50) {
+      this.helper.presentToast('El nombre debe tener entre 3 y 50 caracteres.');
+      return;
+    }
+    if (this.datos.password.length < 8 || this.datos.password.length > 20) {
+      this.helper.presentToast('La contraseña debe tener entre 8 y 20 caracteres.');
+      return;
+    }
+
+    if (this.datos.perfil === 'colaborador' && !this.datos.especialidad) {
+      this.helper.presentToast('Por favor, selecciona una especialidad.');
+      return;
+    }
+
+    const loader = await this.helper.presentLoandig('Comprobando información...');
+    const exists = await this.store.emailOrPhoneExists(this.datos.correo, this.datos.numero);
+    if (exists) {
+      loader.dismiss();
+      this.helper.presentToast('El correo electrónico o número de teléfono ya están registrados.');
+      return;
+    }
+
+    try {
+      const res = await this.auth.registerUser(this.datos);
+      if (res && res.user) {
+        const path = this.datos.perfil === 'colaborador' ? 'Colaboradores' : 'Clientes';
+        this.datos.uid = res.user.uid;
+        this.datos.password = '';
+        if (this.datos.perfil === 'colaborador') {
+          this.datos.idColab = this.generateRandomCode(8);  // Generar código aleatorio para colaboradores
+        } else if (this.datos.perfil === 'cliente') {
+          this.datos.idCliente = this.generateRandomCode(8);  // Generar código aleatorio para clientes
+        }
+        await this.store.createDoc(this.datos, path, this.datos.uid);
+        this.helper.presentToast('Registrado con éxito');
+        this.router.navigate(['/login']);
+      } else {
+        this.helper.presentToast('Error en el registro');
+      }
+    } catch (error) {
+      console.error('Error en el registro:', error);
+      this.helper.presentToast('Error en el registro');
+    } finally {
+      loader.dismiss();
+    }
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Tipos de Usuario',
+      message: 'Cliente - Solicitar Servicio\nColaborador - Brindar Servicio',
+      buttons: ['De acuerdo'],
+    });
+
+    await alert.present();
+  }
+
+  generateRandomCode(length: number): string {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+}
+
+
+

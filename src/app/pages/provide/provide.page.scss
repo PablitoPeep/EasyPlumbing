@@ -1,0 +1,32 @@
+ion-button{
+  margin: 15px;
+}
+/* Estilo para el formulario */
+.form-list {
+  padding: 10px;
+}
+
+.form-item {
+  margin-bottom: 10px;
+  border-radius: 18px;
+}
+
+.form-label {
+  font-weight: bold;
+  
+}
+
+.form-value {
+  font-style: italic;
+}
+
+.form-textarea {
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: none; /* Desactiva el redimensionamiento manual */
+  overflow-y: auto; /* Desplazamiento vertical automático */
+}
+  
+
+

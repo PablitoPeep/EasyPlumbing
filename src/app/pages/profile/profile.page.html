@@ -1,0 +1,88 @@
+<div>
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title class="ion-text-center"> Perfil </ion-title>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="clienteData">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{ clienteData.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="stacked">Correo:</ion-label>
+          <ion-text>{{ clienteData.correo }}</ion-text>
+        </ion-item>
+
+        <ion-item >
+          <ion-label position="stacked">Dirección:</ion-label>
+          <ion-text>{{ clienteData.direccion }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Número:</ion-label>
+          <ion-text>{{ clienteData.numero }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="colabData">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{ colabData.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="stacked">Correo:</ion-label>
+          <ion-text>{{ colabData.correo }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Especialidad:</ion-label>
+          <ion-text>{{ colabData.especialidad }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Numero:</ion-label>
+          <ion-text>{{ colabData.numero }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="adminData">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{ adminData.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="stacked">Correo:</ion-label>
+          <ion-text>{{ adminData.correo }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Perfil:</ion-label>
+          <ion-text>{{ adminData.perfil }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    expand="full"
+    color="danger"
+    class="boton-cerrar"
+    (click)="logout()"
+  >
+    Cerrar Sesión
+  </ion-button>
+</ion-content>

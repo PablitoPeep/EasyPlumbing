@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>SOLICITAR</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="calendar-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+      <ion-card-title>Filtrar</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-icon name="search" slot="start"></ion-icon>
+        <ion-label>Especialidad</ion-label>
+        <ion-select [(ngModel)]="filtroEspecialidad" placeholder="Seleccione una especialidad">
+          <ion-select-option value="gasfiteria">Gasfitería</ion-select-option>
+          <ion-select-option value="plomeria">Plomería</ion-select-option>
+          <ion-select-option value="cerrajeria">Cerrajería</ion-select-option>
+          <ion-select-option value="limpieza">Limpieza</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-row class="ion-padding-top">
+        <ion-col>
+          <ion-button expand="full" color="secondary" (click)="aplicarFiltro()">
+            Aplicar Filtro
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="full" color="light" (click)="resetearFiltro()">
+            Restablecer Filtro
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let solicitud of colabActive">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{ solicitud.nombre }}</ion-card-title>
+          <ion-card-subtitle>{{ solicitud.especialidad }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Descripcion de habilidades: {{ solicitud.descripcion }}</p>
+          <p>Dia disponible: {{ solicitud.dateTime }}</p>
+          <p>Horario disponible: {{ solicitud.horario }}</p>
+        </ion-card-content>
+        <ion-card-footer>
+          <ion-button aria-label=""  color="danger" expand="full" (click)="solicitarServicio(solicitud)">Solicitar Servicio</ion-button>
+        </ion-card-footer>
+      </ion-card>
+    </ion-item>
+    
+  </ion-list>
+</ion-content>
+

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Solicitudes de colaboración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="solicitudesRecibidas.length > 0">
+    <ion-item *ngFor="let solicitud of solicitudesRecibidas">
+      <ion-label>
+        <h2>{{ solicitud.nombreCliente }}</h2>
+        <p>Dirección: {{ solicitud.direccion }}</p>
+        <p>Numero de Contacto: {{ solicitud.numero }}</p>
+        <!-- Aquí puedes mostrar más detalles de la solicitud si lo necesitas -->
+      </ion-label>
+      <ion-button (click)="aceptarSolicitud(solicitud)" color="primary" slot="end">
+        <ion-icon name="shield-checkmark-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="eliminarSolicitud(solicitud.uid)" color="danger" slot="end">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-text *ngIf="solicitudesRecibidas.length === 0" color="medium">
+    <p>No hay solicitudes de servicio disponibles.</p>
+  </ion-text>
+</ion-content>

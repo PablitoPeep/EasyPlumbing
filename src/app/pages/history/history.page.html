@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>
+      Historial de Solicitudes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isCliente; else colaboradorTemplate">
+    <h2>Bienvenido</h2>
+    <ion-list>
+      <ion-item *ngFor="let solicitud of solicitudesAceptadas" lines="none">
+        <ion-card class="full-width-card">
+          <ion-card-header>
+            <ion-card-title>{{ solicitud.nombre }}</ion-card-title>
+            <ion-card-subtitle>{{ solicitud.especialidad }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Descripción: {{ solicitud.descripcion }}</p>
+            <p>Estado: {{ solicitud.estado }}</p>
+            <!-- Agrega más campos aquí según tu modelo solicitudAceptada -->
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ng-template #colaboradorTemplate>
+    <h2>Bienvenido</h2>
+    <ion-list>
+      <ion-item *ngFor="let solicitud of solicitudesAceptadas" lines="none">
+        <ion-card class="full-width-card">
+          <ion-card-header>
+            <ion-card-title>{{ solicitud.nombreCliente }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Número: {{ solicitud.numero }}</p>
+            <p>Dirección: {{ solicitud.direccion }}</p>
+            <p>Estado: {{ solicitud.estado }}</p>
+            <!-- Botón para cambiar el estado de la solicitud -->
+            <ion-button expand="full" color="primary" (click)="presentConfirmAlert(solicitud)">
+              {{ solicitud.estado === 'En proceso' ? 'Marcar como Finalizada' : 'Marcar como En proceso' }}
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+</ion-content>
