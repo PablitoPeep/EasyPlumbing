@@ -1,0 +1,196 @@
+
+/* Estilo para el formulario */
+.form-list {
+  padding: 10px;
+}
+
+.form-item {
+  margin-bottom: 10px;
+  border-radius: 18px;
+}
+
+.form-label {
+  font-weight: bold;
+
+}
+
+/* edicion */
+ion-card {
+  padding: 10px;
+  margin: 10px;
+}
+
+.form-list {
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-item {
+  margin-bottom: 10px;
+}
+ .enter-box{
+  border-radius: 18px;
+  margin: 5%;
+ }
+
+
+.form-value {
+  font-size: 0.9em;
+  color: #666;
+  margin: 2px 0;
+  border-radius: 4px;
+}
+.custom-datetime-button {
+  --color: #007bff; /* Color del texto del botón */
+  --background: #f1f1f1; /* Color de fondo del botón */
+  --border-radius: 8px; /* Bordes redondeados */
+  --padding: 10px 15px; /* Espaciado interno del botón */
+  margin-top: 10px; /* Espaciado superior */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.custom-datetime-button:hover {
+  --background: #e9ecef; /* Cambio de fondo al pasar el ratón por encima */
+}
+
+
+
+ion-button.Activar {
+  margin-top: 20px;
+}
+
+
+.form-label {
+
+  color: #666;
+  font-size: 2em;
+  text-align: left; /* Centrar el texto del label */
+  margin-bottom: 10px;
+  padding: auto;
+}
+
+.form-textarea {
+  background: #151515;
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  font-size: 1em;
+  color: #EEEEEE;
+  width: 100%; /* Asegurar que ocupe todo el ancho del contenedor */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para un efecto moderno */
+  margin-bottom: 20px; /* Espaciado inferior */
+  resize: none; /* Desactivar redimensionamiento manual */
+}
+
+
+ion-card p {
+  font-size: 1.2em;
+  color: #eeeeee;
+  margin-bottom: 20px;
+  text-align: left; /* Centrar el título */
+}
+
+ion-list {
+  border-top: 1px solid #e0e0e0;
+}
+
+
+ion-label h2 {
+  font-size: 1.1em;
+
+  color: #EEEEEE;
+  margin-bottom: 5px;
+}
+
+ion-label p {
+  font-size: 0.9em;
+  color: #eeeeee;
+  margin: 2px 0;
+}
+
+
+ion-button {
+  --background: #ff4757; /* Color del botón de eliminar */
+  --color: #000000;
+  --border-radius: 50%;
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+ ion-title{
+ --color: #000000;
+ }
+
+
+ .solicitudes-activas-card {
+
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+
+}
+
+.solicitudes-activas-card p {
+
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+ion-item {
+  border-bottom: 1px solid #2d2d2d;
+  padding: 15px 0;
+}
+
+ion-item:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #EEEEEE;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 0.9em;
+  color: #f1eded;
+  margin: 2px 0;
+}
+
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #151515;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content div {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-card-title {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+p {
+  margin: 0;
+  font-size: 1em;
+  color: #6c757d;
+}
+
+ion-button {
+  margin-left: 8px; /* Espacio entre el texto y el botón */
+  border-radius: 20px;
+  margin-right: 0; /* Eliminar el margen derecho del botón */
+}
+
+

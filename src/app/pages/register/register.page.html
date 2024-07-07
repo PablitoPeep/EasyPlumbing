@@ -1,0 +1,87 @@
+<ion-content [fullscreen]="true">
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title size="large">REGISTRO</ion-title>
+      <ion-buttons slot="end">
+        <ion-back-button defaultHref="/login"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card class="card_register">
+    <ion-card-content>
+      <ion-radio-group [(ngModel)]="datos.perfil">
+        <ion-list-header>
+          <ion-label>Selecciona tu tipo de usuario</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Cliente</ion-label>
+          <ion-radio value="cliente"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Colaborador</ion-label>
+          <ion-radio value="colaborador"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-card-content>
+    <div class="center-button">
+      <ion-button size="small" color="warning" (click)="presentAlert()">
+        <ion-icon slot="icon-only" name="help"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <ion-card class="card_register" *ngIf="datos.perfil === 'colaborador'">
+    <ion-card-content>
+      <ion-list-header>
+        <ion-label>Selecciona tu especialidad</ion-label>
+      </ion-list-header>
+      <ion-radio-group [(ngModel)]="datos.especialidad">
+        <ion-item *ngFor="let especialidad of ['gasfiteria', 'plomeria', 'cerrajeria', 'limpieza']">
+          <ion-label>{{ especialidad }}</ion-label>
+          <ion-radio [value]="especialidad"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+      <ion-item *ngIf="datos.especialidad">
+        <ion-label position="stacked">Descripción de la especialidad</ion-label>
+        <ion-textarea [value]="especialidadesDescripcion[datos.especialidad]" disabled="true"></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card_register">
+    <ion-card-content>
+      <ion-list-header>
+        <ion-label>Rellena los campos con tu información</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="stacked">Nombre y Apellido</ion-label>
+        <ion-input [(ngModel)]="datos.nombre" name="nombre" aria-label="nombre" placeholder="Ingrese su nombre y apellido" type="text"></ion-input>
+        <ion-icon name="person" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Correo electrónico</ion-label>
+        <ion-input [(ngModel)]="datos.correo" name="correo" aria-label="correo" placeholder="Ingrese su correo electrónico" type="email"></ion-input>
+        <ion-icon name="mail" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Número telefónico</ion-label>
+        <ion-input [(ngModel)]="datos.numero" name="numero" aria-label="numero" placeholder="Ingrese su número de celular" type="tel"></ion-input>
+        <ion-icon name="call" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item *ngIf="datos.perfil === 'cliente'">
+        <ion-label position="stacked">Dirección</ion-label>
+        <ion-input [(ngModel)]="datos.direccion" name="direccion" aria-label="direccion" placeholder="Ingrese su dirección" type="text"></ion-input>
+        <ion-icon name="home" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input [(ngModel)]="datos.password" name="password" aria-label="password" placeholder="Ingrese su contraseña" type="password"></ion-input>
+        <ion-icon name="lock-closed" slot="end"></ion-icon>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button class="boton-registrar" expand="full" color="success" (click)="registrar()">REGISTRARSE</ion-button>
+
+</ion-content>

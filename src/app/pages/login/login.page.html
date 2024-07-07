@@ -1,0 +1,35 @@
+<ion-content class="ion-padding ion-text-center">
+  <img src="assets/plumbing-card.png" />
+  <ion-grid>
+    <ion-row justify-content-center>
+        <ion-card color="light">
+          <ion-card-header>
+            <ion-card-title>EasyPlumbing</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item >
+              <ion-input placeholder="Ingrese su correo electrónico" name="correo" type="text" required [(ngModel)]="credenciales.correo"></ion-input>
+              <ion-icon name="mail"></ion-icon>
+            </ion-item>
+
+            <ion-item >
+              <ion-input placeholder="Ingrese su contraseña" name="password" type="password" required [(ngModel)]="credenciales.password"></ion-input>
+              <ion-icon name="lock-closed"></ion-icon>
+            </ion-item>
+
+            <!-- Cambiar resetPassword() a promptResetPassword() -->
+
+            <ion-button  class="hyper_vinculoo" fill="clear" size="full" (click)="promptResetPassword()">¿Olvidaste tu contraseña?</ion-button>
+
+
+            <ion-button class="boton-iniciar-sesion"  color="danger" size="large" (click)="login()">Iniciar Sesión</ion-button>
+
+            <ion-button color="danger" fill="clear" size="full" (click)="register()">Registrarse</ion-button>
+            <img src="assets/angry_company.png" class="logo" />
+          </ion-card-content>
+        </ion-card>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+

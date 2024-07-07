@@ -1,0 +1,129 @@
+<div>
+  <ion-header>
+    <ion-toolbar color="danger">
+      <ion-title class="ion-text">Perfil</ion-title>
+      <ion-buttons slot="end">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+</div>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="clienteData">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{ clienteData.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="stacked">Correo:</ion-label>
+          <ion-text>{{ clienteData.correo }}</ion-text>
+        </ion-item>
+
+        <ion-item >
+          <ion-label position="stacked">Dirección:</ion-label>
+          <ion-text>{{ clienteData.direccion }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Número:</ion-label>
+          <ion-text>{{ clienteData.numero }}</ion-text>
+        </ion-item>
+        <ion-button *ngIf="clienteData" expand="full" class="ion-text-center" (click)="editarUsuario(clienteData)" color="primary">Editar Perfil</ion-button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="colabData">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{ colabData.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="stacked">Correo:</ion-label>
+          <ion-text>{{ colabData.correo }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Especialidad:</ion-label>
+          <ion-text>{{ colabData.especialidad }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Numero:</ion-label>
+          <ion-text>{{ colabData.numero }}</ion-text>
+        </ion-item>
+        <ion-button *ngIf="colabData"  expand="full" class="ion-text-center" (click)="editarUsuario(colabData)" color="primary">Editar Perfil</ion-button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="adminData">
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>{{ adminData.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label position="stacked">Correo:</ion-label>
+          <ion-text>{{ adminData.correo }}</ion-text>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Perfil:</ion-label>
+          <ion-text>{{ adminData.perfil }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-modal [isOpen]="isModalOpen" (ionModalDidDismiss)="setOpen(false)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="danger">
+          <ion-title>Editar Información</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-card>
+        <ion-item *ngIf="clienteData">
+          <ion-label position="stacked">Dirección</ion-label>
+          <ion-input [(ngModel)]="editedUser.direccion" placeholder="Dirección"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="colabData">
+          <ion-label position="stacked">Especialidad</ion-label>
+          <ion-select [(ngModel)]="editedUser.especialidad" placeholder="Especialidad">
+            <ion-select-option value="gasfiteria">Gasfitería</ion-select-option>
+            <ion-select-option value="plomeria">Plomería</ion-select-option>
+            <ion-select-option value="cerrajeria">Cerrajería</ion-select-option>
+            <ion-select-option value="limpieza">Limpieza</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Número</ion-label>
+          <ion-input [(ngModel)]="editedUser.numero" placeholder="Número"></ion-input>
+        </ion-item>
+
+        <!-- Agrega más campos según sea necesario -->
+        <ion-button  color="success" expand="full" (click)="guardarCambios()">Guardar Cambios</ion-button>
+        <ion-button expand="full" color="danger" (click)="cancelarEdicion()">Cancelar</ion-button>
+      </ion-card>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-button
+    expand="full"
+    color="danger"
+    class="boton-cerrar"
+    (click)="logout()"
+  >
+    Cerrar Sesión
+  </ion-button>
+</ion-content>

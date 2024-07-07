@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Gestión de Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="isAdmin">
+    <ion-list-header>
+      <ion-label color="primary">Clientes</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let cliente of clientes">
+      <ion-label>{{ cliente.nombre }} - {{ cliente.correo }}</ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="confirmarEliminarUsuario(cliente.uid, cliente.perfil)" color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+        <ion-button (click)="editarUsuario(cliente)" color="primary">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="isAdmin">
+    <ion-list-header>
+      <ion-label color="secondary">Colaboradores</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let colaborador of colaboradores">
+      <ion-label>{{ colaborador.nombre }} - {{ colaborador.correo }}</ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="confirmarEliminarUsuario(colaborador.uid, colaborador.perfil)" color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+        <ion-button (click)="editarUsuario(colaborador)" color="primary">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <!-- Modal para editar usuario -->
+  <ion-modal [isOpen]="isModalOpen" (ionModalDidDismiss)="setOpen(false)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="danger">
+          <ion-title>Editar Usuario</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input [(ngModel)]="editedUser.nombre" placeholder="Nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Correo</ion-label>
+          <ion-input [(ngModel)]="editedUser.correo" placeholder="Correo"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="editedUser.perfil === 'cliente'">
+          <ion-label position="stacked">Dirección</ion-label>
+          <ion-input [(ngModel)]="editedUser.direccion" placeholder="Dirección"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="editedUser.perfil === 'colaborador'">
+          <ion-label position="stacked">Especialidad</ion-label>
+          <ion-select [(ngModel)]="editedUser.especialidad" placeholder="Especialidad">
+            <ion-select-option value="gasfiteria">Gasfitería</ion-select-option>
+            <ion-select-option value="plomeria">Plomería</ion-select-option>
+            <ion-select-option value="cerrajeria">Cerrajería</ion-select-option>
+            <ion-select-option value="limpieza">Limpieza</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Número</ion-label>
+          <ion-input [(ngModel)]="editedUser.numero" placeholder="Número"></ion-input>
+        </ion-item>
+        
+        <!-- Agrega más campos según sea necesario -->
+        <ion-button expand="full" (click)="guardarCambios()">Guardar Cambios</ion-button>
+        <ion-button expand="full" color="danger" (click)="cancelarEdicion()">Cancelar</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+

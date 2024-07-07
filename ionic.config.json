@@ -1,0 +1,7 @@
+{
+  "name": "EasyPlumbing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

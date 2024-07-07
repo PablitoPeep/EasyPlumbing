@@ -1,0 +1,28 @@
+.custom-tab-bar {
+  --background: #151515; /* Color de fondo de la barra de pestañas */
+  --color-selected: #007bff; /* Color de los íconos y el texto cuando están seleccionados */
+  --color: #6c757d; /* Color de los íconos y el texto cuando no están seleccionados */
+  padding: 10px 0; /* Espacio adicional alrededor de los botones */
+  border-top: 1px solid #2d2d2d; /* Línea superior para separar la barra de pestañas del contenido */
+}
+
+.custom-tab-bar ion-tab-button {
+  background: #2d2d2d; /* Color de fondo de los botones */
+  border-radius: 10px; /* Bordes redondeados */
+  margin: 0 5px; /* Espacio entre los botones */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil para los botones */
+  transition: background 0.3s; /* Transición suave para el cambio de fondo */
+}
+
+.custom-tab-bar ion-tab-button:hover {
+  background: #2d2d2d; /* Cambio de fondo al pasar el ratón por encima */
+}
+
+.custom-tab-bar ion-icon {
+  margin-bottom: 2px; /* Espacio entre el ícono y el texto */
+}
+
+.custom-tab-bar ion-tab-button[aria-selected="true"] {
+  background: #007bff; /* Fondo de los botones seleccionados */
+  color: white; /* Color del texto de los botones seleccionados */
+}

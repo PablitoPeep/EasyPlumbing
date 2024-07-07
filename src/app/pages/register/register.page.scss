@@ -1,0 +1,36 @@
+ion-button {
+    margin: 10px;
+    font-size: 16px; /* Tamaño de fuente */
+    --border-radius: 8px; /* Borde redondeado */
+    --background: linear-gradient(to bottom, #ff6666, #ff4d4d); /* Fondo degradado */
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+    --color: #fff; /* Color del texto */
+    --padding-start: 16px; /* Espaciado interno horizontal */
+    --padding-end: 16px; /* Espaciado interno horizontal */
+
+  }
+
+  ion-button:hover {
+    --background: linear-gradient(to bottom, #ff4d4d, #ff3333); /* Fondo degradado al pasar el mouse */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra al pasar el mouse */
+  }
+
+  ion-button:active {
+    transform: translateY(1px); /* Efecto de clic */
+  }
+
+  .center-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .card_register{
+    margin-bottom: 10px; /* Separación entre elementos de formulario */
+    border-radius: 15px; /* Bordes redondeados */
+    margin-left: auto;
+    margin: 10px;
+  }
+
+

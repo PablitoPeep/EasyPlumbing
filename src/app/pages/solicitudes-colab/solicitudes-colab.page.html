@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title class="ion-text">Solicitudes De Colaboración</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="file-tray-full-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+  <div class="header-content">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <p class="sub_title" style="margin-right: 8px;">¡Revisa tus Solicitudes de Trabajo!</p>
+    <ion-button size="small" color="warning" shape="round" (click)="presentAlert()">
+      <ion-icon slot="icon-only" name="help"></ion-icon>
+    </ion-button>
+  </div>
+</div>
+</ion-card>
+
+
+
+
+<ion-content>
+  <ion-card>
+  <ion-list *ngIf="solicitudesRecibidas.length > 0" class="solicitudes-recibidas-list">
+    <ion-item *ngFor="let solicitud of solicitudesRecibidas">
+      <div class="header-content">
+      <ion-label>
+        <h2>{{ solicitud.nombreCliente }}</h2>
+        <p>Dirección: {{ solicitud.direccion }}</p>
+        <p>Numero de Contacto: {{ solicitud.numero }}</p>
+        <!-- Más detalles de la solicitud si es necesario -->
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="aceptarSolicitud(solicitud)" color="primary">
+          <ion-icon name="shield-checkmark-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="eliminarSolicitud(solicitud.uid)" color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+    </ion-item>
+  </ion-list>
+</ion-card>
+
+  <ion-text *ngIf="solicitudesRecibidas.length === 0" color="medium">
+    <p>No hay solicitudes de servicio disponibles.</p>
+  </ion-text>
+</ion-content>
+

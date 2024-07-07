@@ -1,0 +1,61 @@
+ion-content {
+    --ion-background-color: #f5f5f5; /* Cambiar el color de fondo del contenido */
+  }
+
+  ion-grid {
+    margin-top: 20px; /* Espacio superior para separar del borde superior */
+  }
+
+  ion-card {
+    max-width: 400px; /* Ancho máximo del formulario de inicio de sesión */
+    margin: auto; /* Centrar horizontalmente en la pantalla */
+    margin-bottom: 16px; /* Separación entre elementos de formulario */
+    border-radius: 15px; /* Bordes redondeados */
+    width: 350px;
+  }
+
+  ion-card-header {
+    text-align: center; /* Centrar el título del formulario */
+  }
+
+  ion-card-content {
+    padding: 20px; /* Agregar espacio interno al contenido del formulario */
+  }
+
+  ion-item {
+    margin-bottom: 16px; /* Separación entre elementos de formulario */
+    margin-bottom: 16px; /* Separación entre elementos de formulario */
+    border-radius: 15px; /* Bordes redondeados */
+  }
+
+  ion-button {
+    margin-top: 16px; /* Espacio superior para los botones */
+
+  }
+
+  /* Estilo para el botón "¿Olvidaste tu contraseña?" */
+  .hyper_vinculo {
+    text-align: center;
+    font-size: 16px;
+    text-transform: none !important;
+  }
+  .boton-iniciar-sesion{
+    margin-bottom: 16px; /* Separación entre elementos de formulario */
+    border-radius: 20px; /* Bordes redondeados */
+    width: 100%;
+    text-transform: none !important;
+  }
+
+
+  /* Estilo para los iconos dentro de los elementos de formulario */
+  ion-icon[name="mail"], ion-icon[name="lock-closed"] {
+    color: #999; /* Color de los iconos */
+    margin-right: 8px; /* Espacio a la derecha de los iconos */
+  }
+  .logo {
+    width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+    height: auto; /* Mantiene la proporción del logo */
+    bottom: 0;
+    right: 0;
+    margin: 10px; /* Ajusta el margen según tus necesidades */
+  }

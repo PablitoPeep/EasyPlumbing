@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title class="ion-text">Historial De Solicitudes</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="book-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+   <!-- Cliente Template -->
+<div *ngIf="isCliente; else colaboradorTemplate" class="colaborador-container">
+  <h2 class="ion-text-center">Hola, {{clienteData?.nombre}} </h2>
+  <ion-card class="tarjeta-datos">
+    <div class="historial-container">
+      <p class="subtitulo">Mi historial:</p>
+
+      <ion-list lines="none">
+        <ion-item *ngFor="let solicitud of solicitudesAceptadas" lines="none">
+          <ion-label>
+            <h3>{{ solicitud.nombre }}</h3>
+            <p>{{ solicitud.especialidad }}</p>
+            <p>Descripción: {{ solicitud.descripcion }}</p>
+            <p>Estado: {{ solicitud.estado }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-card>
+</div>
+
+  <ng-template #colaboradorTemplate>
+
+    <div *ngIf="isColaborador" class="colaborador-container">
+
+      <ion-card>
+      <div class="historial-container">
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2 class="ion-text-center" style="margin-right: 8px;">Hola, {{colabData?.nombre}}</h2>
+          <ion-button size="small" color="warning" shape="round" (click)="presentAlert()">
+            <ion-icon slot="icon-only" name="help"></ion-icon>
+          </ion-button>
+
+        </div>
+
+        <p class="subtitulo">Mi historial:</p>
+        <ion-list lines="none">
+          <ion-item *ngFor="let solicitud of solicitudesAceptadas">
+            <ion-label>
+              <h3>{{ solicitud.nombreCliente }}</h3>
+              <p>Contacto de cliente: {{ solicitud.numero }}</p>
+              <p>Dirección: {{ solicitud.direccion }}</p>
+              <p>Estado: {{ solicitud.estado }}</p>
+            </ion-label>
+            <ion-buttons slot="end">
+              <ion-button (click)="confirmarEliminarUsuario(solicitud.uid)" color="danger">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card>
+    </div>
+
+  </ng-template>
+  <ion-text *ngIf="solicitudesAceptadas.length === 0" color="medium">
+    <p>No hay solicitudes de servicio disponibles.</p>
+  </ion-text>
+</ion-content>
+

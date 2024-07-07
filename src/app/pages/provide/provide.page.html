@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Activar Cuenta</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="finger-print-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-card class="enter-box">
+    <div class="header-content">
+      <div>
+        <ion-card-title>
+          {{datosColaborador.nombre}}:
+          <ion-button size="small" color="warning" shape="round" (click)="presentAlert()">
+            <ion-icon slot="icon-only" name="help"></ion-icon>
+          </ion-button>
+        </ion-card-title>
+        <p>¿Listo para activar tu cuenta?</p>
+      </div>
+    </div>
+
+    <ion-button aria-label="" class="Activar" expand="full" (click)="setOpen(true)">Activa tu cuenta </ion-button>
+
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar color="danger">
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false)">Salir</ion-button>
+            </ion-buttons>
+            <ion-title>Activar Cuenta</ion-title>
+
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-card class="form-list">
+            <ion-item class="form-item">
+              <ion-label class="form-label" position="stacked">Nombre del Colaborador:</ion-label>
+              <label class="form-value">{{ datosColaborador.nombre }}</label>
+            </ion-item>
+
+            <ion-item class="form-item">
+              <ion-label class="form-label" position="stacked">Especialidad:</ion-label>
+              <label class="form-value">{{ datosColaborador.especialidad }}</label>
+            </ion-item>
+
+            <ion-item class="form-item">
+              <ion-label class="form-label" position="stacked">Días Disponibles:</ion-label>
+              <ion-datetime-button datetime="datetime" class="custom-datetime-button"></ion-datetime-button>
+              <ion-modal [keepContentsMounted]="true">
+                <ng-template>
+                  <ion-datetime id="datetime" [(ngModel)]="dateTimeISO" locale="es-ES" presentation="date" [min]="minDate" (ionChange)="onDateTimeChange($event)"></ion-datetime>
+                </ng-template>
+              </ion-modal>
+            </ion-item>
+
+            <ion-item class="form-item">
+              <ion-label class="form-label" position="stacked">Horario Disponible:</ion-label>
+              <ion-select [(ngModel)]="datosColaborador.horario" placeholder="Seleccione su horario disponible">
+                <ion-select-option value="08:00 hasta 14:00">08:00 hasta 14:00</ion-select-option>
+                <ion-select-option value="14:00 hasta 20:00">14:00 hasta 20:00</ion-select-option>
+                <ion-select-option value="20:00 hasta 02:00">20:00 hasta 02:00</ion-select-option>
+                <ion-select-option value="02:00 hasta 08:00">02:00 hasta 08:00</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item class="form-item">
+              <ion-label class="form-label" position="stacked">Breve descripción de tus habilidades:</ion-label>
+              <p></p>
+              <ion-textarea class="form-textarea" [(ngModel)]="datosColaborador.descripcion"></ion-textarea>
+            </ion-item>
+
+            <ion-button expand="full" (click)="activarColaborador(setOpen(false))">Activar Disponibilidad</ion-button>
+          </ion-card>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-card>
+
+  <ion-card class="solicitudes-activas-card">
+    <div class="header-content">
+      <div>
+    <ion-card-title>Disponibilidad: </ion-card-title>
+    </div>
+  </div>
+
+    <ion-list lines="none">
+      <ion-item *ngFor="let solicitud of solicitudesColaborador">
+        <div class="header-content">
+        <ion-label>
+          <h2>{{ solicitud.nombre }}</h2>
+          <p>Descripción: {{ solicitud.descripcion }}</p>
+          <p>Día Disponible: {{ solicitud.dateTime }}</p>
+          <p>Horario Disponible: {{ solicitud.horario }}</p>
+        </ion-label>
+
+        <ion-buttons slot="end">
+          <ion-button (click)="confirmarEliminarUsuario(solicitud.uid)" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,72 @@
+
+
+  .icon-start {
+    margin-right: 8px;
+  }
+
+  .filtro-item {
+    margin-bottom: 16px;
+  }
+
+  .botones-filtro {
+    margin-top: 16px;
+  }
+
+  .solicitud-card {
+    margin: 10px;
+  }
+
+.tarjeta-datos{
+  background-color: #151515;
+  border-radius: 18px;
+  margin: auto;
+
+}
+
+.tarjeta-datos1{
+  margin: 10px;
+  border-radius: 18px;
+}
+
+
+
+
+ion-card.tarjeta-datos {
+  margin: 16px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+ion-card-title {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+ion-card-subtitle {
+  font-size: 1.1em;
+  color: #6c757d;
+}
+
+ion-card-content p {
+  margin: 8px 0;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+ion-button {
+  border-radius: 20px;
+
+}
+
+ion-item {
+  --background: transparent;
+}

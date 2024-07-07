@@ -1,0 +1,61 @@
+
+ion-text {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  text-align: center;
+  margin: 20px 0;
+}
+
+ion-text p {
+  font-size: 1.1em;
+  color: #666;
+}
+
+.sub_title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #eeeeee;
+  margin-bottom: 10px;
+  text-align: center; /* Centrar el título */
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px;
+}
+
+ion-card {
+  padding: 10px;
+  border-radius: 18px;
+  margin: 10px;
+}
+
+
+
+
+.solicitudes-recibidas-list {
+  border-radius: 18px;
+
+}
+
+ion-item {
+  border-bottom: 1px solid #242424;
+
+}
+
+ion-item:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #e2e2e2;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 0.9em;
+  color: #666;
+  margin: 2px 0;
+}
+
+
