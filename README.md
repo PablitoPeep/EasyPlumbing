@@ -7,10 +7,10 @@ Easy Plumbing es una aplicación móvil diseñada para conectar a usuarios con t
 - Registro e inicio de sesión de usuarios.
 - Solicitud de servicios de mantenimiento del hogar.
 - Gestión de citas y seguimiento del estado de las solicitudes.
-- Calificación y comentarios sobre la calidad del trabajo realizado.
 
 ## Tecnologías Utilizadas
-
-- Firebase Authentication y Firestore para gestión de usuarios y datos.
-- API de geolocalización para asignación de servicios basada en proximidad.
-- Implementación de notificaciones mediante servicios de mensajería.
+- Ionic: Framework para desarrollo de aplicaciones móviles.
+- Angular: Framework para el desarrollo del frontend.
+- Google Firebase: Base de datos no relacional y autenticación.
+- Android Studio: Generación y firma de la APK.
+- Jasmine y Karma: Pruebas unitarias.
